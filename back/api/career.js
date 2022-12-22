@@ -20,7 +20,20 @@ router.get('/', async (req, res) => {
 
 // Edit Career
 router.put('/', (req, res) => {
-  res.status(200).end();
+  const { id, company, start_date, end_date, content, tasks } = req.body;
+  Career.findByIdAndUpdate(id, {
+    company,
+    employment_date: start_date,
+    end_date,
+    content,
+    tasks,
+  })
+    .then(() => {
+      res.status(200).json({ success: true });
+    })
+    .catch((e) => {
+      res.status(400).json({ success: false });
+    });
 });
 
 module.exports = router;

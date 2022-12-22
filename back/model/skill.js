@@ -6,14 +6,18 @@ const SkillSchema = new mongoose.Schema({
     required: true,
     enum: ['front', 'back', 'vc', 'communication'],
   },
-  img: {
-    type: String,
-    required: true,
-  },
-  title: {
-    type: String,
-    required: true,
-  },
+  stacks: [
+    {
+      img: {
+        type: String,
+        required: true,
+      },
+      title: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
 });
 
 const Skill = mongoose.model('skill', SkillSchema);

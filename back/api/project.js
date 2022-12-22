@@ -20,7 +20,26 @@ router.get('/', async (req, res) => {
 
 // Edit Project
 router.put('/', (req, res) => {
-  res.status(200).end();
+  const { id, title, content, img, link, date, main_func, front, back, db } =
+    req.body;
+
+  Project.findByIdAndUpdate(id, {
+    title,
+    content,
+    img,
+    link,
+    date,
+    main_func,
+    front,
+    back,
+    db,
+  })
+    .then(() => {
+      res.status(200).json({ success: true });
+    })
+    .catch((e) => {
+      res.status(400).json({ success: false });
+    });
 });
 
 module.exports = router;

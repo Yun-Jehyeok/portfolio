@@ -20,6 +20,17 @@ router.get('/', async (req, res) => {
 
 // Edit About
 router.put('/', (req, res) => {
+  const { id, content } = req.body;
+
+  About.findByIdAndUpdate(id, {
+    content,
+  })
+    .then(() => {
+      res.status(200).json({ success: true });
+    })
+    .catch((e) => {
+      res.status(400).json({ success: false });
+    });
   res.status(200).end();
 });
 

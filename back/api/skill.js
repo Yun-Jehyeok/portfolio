@@ -20,7 +20,17 @@ router.get('/', async (req, res) => {
 
 // Edit Skill
 router.put('/', (req, res) => {
-  res.status(200).end();
+  const { id, stacks } = req.body;
+
+  Skill.findByIdAndUpdate(id, {
+    stacks,
+  })
+    .then(() => {
+      res.status(200).json({ success: true });
+    })
+    .catch((e) => {
+      res.status(400).json({ success: false });
+    });
 });
 
 module.exports = router;
