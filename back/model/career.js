@@ -11,7 +11,7 @@ const CareerSchema = new mongoose.Schema({
     default: moment().format('YYYY.MM.DD'),
   },
   end_date: {
-    type: String,
+    type: moment().format('YYYY.MM.DD'),
     required: true,
   },
   content: {

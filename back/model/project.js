@@ -24,9 +24,9 @@ const ProjectSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  front: [{ type: String }],
-  back: [{ type: String }],
-  db: [{ type: String }],
+  front: [{ stack: { type: String } }],
+  back: [{ stack: { type: String } }],
+  db: [{ stack: { type: String } }],
 });
 
 const Project = mongoose.model('project', ProjectSchema);
